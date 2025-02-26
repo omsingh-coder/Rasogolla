@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Love Quiz</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #ffccff, #ff99cc);
+      color: #d63384;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      margin: 50px auto;
+      max-width: 800px;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+    }
+
+    .quiz-question {
+      margin-bottom: 15px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #d63384;
+      border-radius: 5px;
+      margin: 10px;
+      width: 80%;
+      text-align: center;
+    }
+
+    button {
+      background-color: #d63384;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #b52d70;
+    }
+
+    #quizResult {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>💞 Love Quiz 💞</h1>
+    <p>Answer all questions correctly to unlock your special gift!</p>
+
+    <div id="quiz">
+      <div class="quiz-question">
+        <p>1. Where did we first meet?</p>
+        <input type="text" id="q1" placeholder="Your Answer">
+      </div>
+      <div class="quiz-question">
+        <p>2. What is my favorite thing about you?</p>
+        <input type="text" id="q2" placeholder="Your Answer">
+      </div>
+      <div class="quiz-question">
+        <p>3. Which place do I dream to visit with you?</p>
+        <input type="text" id="q3" placeholder="Your Answer">
+      </div>
+    </div>
+
+    <p id="quizResult"></p>
+    <button onclick="checkQuiz()">Submit Quiz</button>
+  </div>
+
+  <script>
+    function checkQuiz() {
+      const answers = {
+        q1: "Telegram",
+        q2: "Smile",
+        q3: "Kedarnath"
+      };
+
+      let allCorrect = true;
+
+      for (let key in answers) {
+        const userAnswer = document.getElementById(key).value.trim();
+        if (userAnswer.toLowerCase() !== answers[key].toLowerCase()) {
+          allCorrect = false;
+        }
+      }
+
+      const quizResultElement = document.getElementById("quizResult");
+
+      if (allCorrect) {
+        quizResultElement.style.color = "green";
+        quizResultElement.innerText = "All answers are correct! Redirecting to your special gift...";
+        setTimeout(() => {
+          window.location.href = "gift.html";
+        }, 1500);
+      } else {
+        quizResultElement.style.color = "red";
+        quizResultElement.innerText = "Some answers are incorrect. Please try again.";
+      }
+    }
+  </script>
+</body>
+</html>

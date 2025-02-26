@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎁 Special Gift 🎁</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #ffccff, #ff99cc);
+            color: #d63384;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin: 50px auto;
+            max-width: 600px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #d63384;
+            border-radius: 5px;
+            width: 80%;
+            text-align: center;
+        }
+
+        button {
+            background-color: #d63384;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #b52d70;
+        }
+
+        #giftMessage {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .gift-box {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .gift-box img {
+            width: 200px;
+            height: auto;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🎁 Your Special Gift 🎁</h1>
+        <p>Enter the secret code to unlock your gift:</p>
+        
+        <input type="text" id="giftCode" placeholder="Enter Gift Code">
+        <button onclick="checkGiftCode()">Unlock Gift</button>
+        
+        <p id="giftMessage"></p>
+
+        <div class="gift-box" id="giftBox">
+            <p>Surprise! 💝 I will always love you! ❤️</p>
+            <img src="photo1.jpg" alt="Gift Box">
+        </div>
+
+        <!-- Next button appears only when the correct code is entered -->
+        <button onclick="location.href='letter.html'" id="nextFromGift" class="hidden">Next → Love Letter</button>
+    </div>
+
+    <script>
+        function checkGiftCode() {
+            const correctCode = "I Love You";
+            const userCode = document.getElementById("giftCode").value.trim();
+            const giftMessage = document.getElementById("giftMessage");
+            const giftBox = document.getElementById("giftBox");
+            const nextButton = document.getElementById("nextFromGift");
+
+            if (userCode === correctCode) {
+                giftMessage.style.color = "green";
+                giftMessage.innerText = "🎁 Surprise! I will always love you! ❤️";
+                giftBox.style.display = "block";
+                nextButton.classList.remove("hidden");  // Show next button
+            } else {
+                giftMessage.style.color = "red";
+                giftMessage.innerText = "❌ Incorrect code. Please try again.";
+                giftBox.style.display = "none";
+                nextButton.classList.add("hidden");  // Hide next button
+            }
+        }
+    </script>
+
+</body>
+</html>
